@@ -1,22 +1,46 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, session
 import os
 import shutil
 from PyPDF2 import PdfFileWriter, PdfFileReader
 import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
+from secret import SECRET_KEY
+import base64
+from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = SECRET_KEY
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 def home():
+    if not session.get("P_NAME"):
+        session["P_NAME"] = " "
+    if not session.get("P_PHONE"):
+        session["P_PHONE"] = " "
+    if not session.get("P_LICENSE"):
+        session["P_LICENSE"] = " "
+    if not session.get("P_SIGN"):
+        session["P_SIGN"] = " "
+    else:
+        image_data = base64.b64decode(session.get("P_SIGN"))
+        with open("SIGNATURE.png", "wb") as f:
+            f.write(image_data)
+
+    if request.method == "POST":
+        print(request.form)
+        session["P_NAME"] = (request.form["P_name"])
+        session["P_PHONE"] = (request.form["P_phone"])
+        session["P_LICENSE"] = (request.form["P_license"])
+        if request.files["P_sign"]:
+            r = request.files["P_sign"].read()
+            session["P_SIGN"] = base64.b64encode(r).decode('utf-8')
     return render_template("index.html")
 
 @app.route("/molst_form", methods=["POST", "GET"])
 def molst_form():
     if request.method == "POST":
-        print(request.form)
-        # Create a BytesIO object to store the PDF content
+        
         packet = io.BytesIO()
 
         # First page
@@ -39,7 +63,6 @@ def molst_form():
         can.save()
         packet.seek(0)
 
-        # Create a new BytesIO object for the second page
         packet_second_page = io.BytesIO()
 
         # Second page
@@ -83,7 +106,6 @@ def molst_form():
         can_second_page.save()
         packet_second_page.seek(0)
 
-        # Create a new BytesIO object for the third page
         # packet_third_page = io.BytesIO()
 
         # # Third page
@@ -121,7 +143,11 @@ def molst_form():
         #/home/AmmarKhawaja/mysite/forms for PythonAnywhere
         return send_file(os.path.join("./forms", "molst_form_M.pdf"), as_attachment=True, download_name="molst_form.pdf")
     else:
-        return render_template("molst_form.html")
+        return render_template("molst_form.html", 
+                               P_NAME=session.get("P_NAME"), 
+                               P_PHONE=session.get("P_PHONE"), 
+                               P_LICENSE=session.get("P_LICENSE"), 
+                               DATE=datetime.now().strftime("%m/%d/%Y"))
 
 if __name__ == "__main__":
     app.run(debug= True)

@@ -8,4 +8,14 @@
     <div style="padding: 20px;">
         <a href="{{ url_for('molst_form') }}" style="font-size: 30px;">MOLST Form</a>
     </div>
+    <div style="text-align: left;">
+    <h2>User Info</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <p>Name: <input type="text" name="P_name" /></p>
+            <p>Phone Number: <input type="text" name="P_phone" /></p>
+            <p>License Number: <input type="text" name="P_license" /></p>
+            <input type="file" name="P_sign" accept="image/*"><br><br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
 </body>

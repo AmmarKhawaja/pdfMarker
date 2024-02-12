@@ -6,7 +6,6 @@
     <h1>MOLST Form</h1>
     <hr>
     <form action="#" method="post">
-
         <p>Name: <input type="text" name="name" /></p>
         <p>DOB: <input type="text" name="dob" /></p>
         <hr>
@@ -114,10 +113,10 @@
         <p>Other Orders: <input type="text" name="otherorders" /></p>
         <hr>
         <p>Practitioner’s Signature: <input type="text" name="psign" /></p>
-        <p>Print Practitioner’s Name: <input type="text" name="pname" /></p>
-        <p>Maryland License #: <input type="text" name="license" /></p>
-        <p>Phone Number: <input type="text" name="phone" /></p>
-        <p>Date: <input type="text" name="date" /></p>
+        <p>Print Practitioner’s Name: <input type="text" name="pname" value="{{ P_NAME }}"/></p>
+        <p>Maryland License #: <input type="text" name="license" value="{{ P_LICENSE }}" /></p>
+        <p>Phone Number: <input type="text" name="phone" value="{{ P_PHONE }}" /></p>
+        <p>Date: <input type="text" name="date" value="{{ DATE }}" /></p>
         <br>
         <input type="submit" value="Submit">
     </form>
