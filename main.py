@@ -11,6 +11,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
+app.config['UPLOAD_FOLDER'] = 'signatures'
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -22,19 +24,24 @@ def home():
         session["P_LICENSE"] = " "
     if not session.get("P_SIGN"):
         session["P_SIGN"] = " "
-    else:
-        image_data = base64.b64decode(session.get("P_SIGN"))
-        with open("SIGNATURE.png", "wb") as f:
-            f.write(image_data)
+    if session.get("P_NAME"):
+            # /home/AmmarKhawaja/mysite/signatures/
+            matching_files = [file for file in os.listdir("./signatures/") if file.startswith(session.get("P_NAME"))]
+            if len(matching_files) > 0:
+                session["P_SIGN"] = matching_files[0]
 
     if request.method == "POST":
         print(request.form)
         session["P_NAME"] = (request.form["P_name"])
         session["P_PHONE"] = (request.form["P_phone"])
         session["P_LICENSE"] = (request.form["P_license"])
-        if request.files["P_sign"]:
-            r = request.files["P_sign"].read()
-            session["P_SIGN"] = base64.b64encode(r).decode('utf-8')
+        file = request.files['P_sign']
+        if file:
+            if len(session.get("P_NAME")) > 5:
+                filename = session.get("P_NAME") + "|" + file.filename.replace("|", "")
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                session['P_SIGN'] = filename
+
     return render_template("index.html")
 
 @app.route("/molst_form", methods=["POST", "GET"])
@@ -55,7 +62,9 @@ def molst_form():
         can.drawString(60, dims[int(request.form["1"]) - 1], "X")
         dims = [357, 207, 187, 143]
         can.drawString(85, dims[int(request.form["3"]) - 1], "X")
-        can.drawString(120, 59, request.form["psign"])
+        # can.drawString(120, 59, request.form["psign"])
+        # /home/AmmarKhawaja/mysite/signatures/
+        can.drawImage("signatures/" + session.get("P_SIGN"), 120, 59, 50, 15)
         can.drawString(380, 59, request.form["pname"])
         can.drawString(120, 35, request.form["license"])
         can.drawString(350, 35, request.form["phone"])
@@ -98,7 +107,9 @@ def molst_form():
                                    dims[int(request.form["11"]) - 1][1], "X")
         can_second_page.drawString(80, 150, request.form["otherorders"])
         can_second_page.drawString(425, 193, request.form["timelimit5"])
-        can_second_page.drawString(120, 59, request.form["psign"])
+        # can_second_page.drawString(120, 59, request.form["psign"])
+        # /home/AmmarKhawaja/mysite/signatures/
+        can_second_page.drawImage("signatures/" + session.get("P_SIGN"), 120, 59, 50, 15)
         can_second_page.drawString(380, 59, request.form["pname"])
         can_second_page.drawString(120, 35, request.form["license"])
         can_second_page.drawString(350, 35, request.form["phone"])
