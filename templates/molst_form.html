@@ -1,122 +1,298 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title> Main Page </title>
+    <title>MOLST Form</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="radio"] + label {
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .radio-group {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .time-limit {
+            margin-left: 40px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 20px 0;
+        }
+
+        input[type="submit"] {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto 0;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .practitioner-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+    </style>
 </head>
 <body>
     <h1>MOLST Form</h1>
-    <hr>
     <form action="#" method="post">
-        <p>Name: <input type="text" name="name" /></p>
-        <p>DOB: <input type="text" name="dob" /></p>
-        <hr>
-        <label for="male">Male</label>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="female">Female</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <hr>
-        <p>I hereby certify that these orders are entered as a result of a discussion with and the informed consent of:</p>
-        <input type="radio" id="radio1" name="1" value="1">
-        <label for="radio1">the patient;</label><br>
-        <input type="radio" id="radio2" name="1" value="2">
-        <label for="radio2">the patient’s health care agent as named in the patient’s advance directive;</label><br>
-        <input type="radio" id="radio3" name="1" value="3">
-        <label for="radio3">the patient’s guardian of the person as per the authority granted by a court order;</label><br>
-        <input type="radio" id="radio4" name="1" value="4">
-        <label for="radio4">the patient’s surrogate as per the authority granted by the Health Care Decisions Act;</label><br>
-        <input type="radio" id="radio5" name="1" value="5">
-        <label for="radio5">if the patient is a minor, the patient’s legal guardian or another legally authorized adult.</label><br>
-        <p>Or, I hereby certify that these orders are based on:</p>
-        <input type="radio" id="radio6" name="1" value="6">
-        <label for="radio6">instructions in the patient’s advance directive;</label><br>
-        <input type="radio" id="radio7" name="1" value="7">
-        <label for="radio7">other legal authority in accordance with all provisions of the Health Care Decisions Act. All supporting documentation must be contained in the patient’s medical records.</label><br>
-        <input type="radio" id="radio9" name="1" value="8">
-        <label for="radio9">Mark this line if the patient or authorized decision maker declines to discuss or is unable to make a decision about these treatments.</label><br>
-        <hr>
-        <p>CPR (RESUSCITATION) STATUS:</p>
-        <input type="radio" id="radio11" name="3" value="1">
-        <label for="radio11">Attempt CPR</label><br>
-        <p>No CPR, Option A, Comprehensive Efforts to Prevent Arrest:</p>
-        <input type="radio" id="radio12" name="3" value="2">
-        <label for="radio12">Option A-1, Intubate</label><br>
-        <input type="radio" id="radio13" name="3" value="3">
-        <label for="radio13">Option A-2, Do Not Intubate (DNI)</label><br>
-        <br>
-        <input type="radio" id="radio13" name="3" value="4">
-        <label for="radio13">No CPR, Option B, Palliative and Supportive Care</label><br>
-        <hr>
-        <p>ARTIFICIAL VENTILATION</p>
-        <input type="radio" id="radio15" name="5" value="1">
-        <label for="radio15">May use intubation and artificial ventilation indefinitely, if medically indicated.</label><br>
-        <input type="radio" id="radio16" name="5" value="2">
-        <label for="radio16">May use intubation and artificial ventilation as a limited therapeutic trial.</label>
-        <p>Time Limit: <input type="text" name="timelimit1" /></p>
-        <input type="radio" id="radio17" name="5" value="3">
-        <label for="radio17">May use only CPAP or BiPAP for artificial ventilation, as medically indicated.</label>
-        <p>Time Limit: <input type="text" name="timelimit2" /></p>
-        <input type="radio" id="radio18" name="5" value="4">
-        <label for="radio18">Do not use any artificial ventilation (no intubation, CPAP, or BiPAP).</label><br>
-        <hr>
-        <p>BLOOD TRANSFUSION</p>
-        <input type="radio" id="radio21" name="6" value="1">
-        <label for="radio21">May give any blood product (whole blood, packed red blood cells, plasma, or platelets) that is medically indicated.</label><br>
-        <input type="radio" id="radio22" name="6" value="2">
-        <label for="radio22">Do not give any blood products.</label><br>
-        <hr>
-        <p>HOSPITAL TRANSFER</p>
-        <input type="radio" id="radio24" name="7" value="1">
-        <label for="radio24">Transfer to hospital for any situation requiring hospital-level care.</label><br>
-        <input type="radio" id="radio25" name="7" value="2">
-        <label for="radio25">Transfer to hospital for severe pain or severe symptoms that cannot be controlled otherwise.</label><br>
-        <input type="radio" id="radio26" name="7" value="3">
-        <label for="radio26">Do not transfer to hospital, but treat with options available outside the hospital.</label><br>
-        <hr>
-        <p>MEDICAL WORKUP</p>
-        <input type="radio" id="radio27" name="8" value="1">
-        <label for="radio27">May perform any medical tests indicated to diagnose and/or treat a medical condition.</label><br>
-        <input type="radio" id="radio28" name="8" value="2">
-        <label for="radio28">Only perform limited medical tests necessary for symptomatic treatment or comfort.</label><br>
-        <input type="radio" id="radio29" name="8" value="3">
-        <label for="radio29">Do not perform any medical tests for diagnosis or treatment.</label><br>
-        <hr>
-        <p>ANTIBIOTICS</p>
-        <input type="radio" id="radio31" name="9" value="1">
-        <label for="radio31">May use antibiotics (oral, intravenous, or intramuscular) as medically indicated.</label><br>
-        <input type="radio" id="radio32" name="9" value="2">
-        <label for="radio32">May use oral antibiotics when medically indicated, but do not give intravenous or intramuscular antibiotics.</label><br>
-        <input type="radio" id="radio33" name="9" value="3">
-        <label for="radio33">May use oral antibiotics only when indicated for symptom relief or comfort.</label><br>
-        <input type="radio" id="radio34" name="9" value="4">
-        <label for="radio34">Do not treat with antibiotics.</label><br>
-        <hr>
-        <p>ARTIFICIALLY ADMINISTERED FLUIDS AND NUTRITION</p>
-        <input type="radio" id="radio35" name="10" value="1">
-        <label for="radio35">May give artificially administered fluids and nutrition, even indefinitely, if medically indicated.</label><br>
-        <input type="radio" id="radio36" name="10" value="2">
-        <label for="radio36">May give artificially administered fluids and nutrition, if medically indicated, as a trial.</label>
-        <p>Time Limit: <input type="text" name="timelimit3" /></p>
-        <input type="radio" id="radio37" name="10" value="3">
-        <label for="radio37">May give fluids for artificial hydration as a therapeutic trial, but do not give artificially administered nutrition.</label>
-        <p>Time Limit: <input type="text" name="timelimit4" /></p>
-        <input type="radio" id="radio38" name="10" value="4">
-        <label for="radio38">Do not provide artificially administered fluids or nutrition.</label><br>
-        <hr>
-        <p>DIALYSIS</p>
-        <input type="radio" id="radio39" name="11" value="1">
-        <label for="radio39">May give chronic dialysis for end-stage kidney disease if medically indicated.</label><br>
-        <input type="radio" id="radio40" name="11" value="2">
-        <label for="radio40">May give dialysis for a limited period.</label>
-        <p>Time Limit: <input type="text" name="timelimit5" /></p>
-        <input type="radio" id="radio41" name="11" value="3">
-        <label for="radio41">Do not provide acute or chronic dialysis.</label><br>
-        <hr>
-        <p>Other Orders: <input type="text" name="otherorders" /></p>
-        <hr>
-        <p>Print Practitioner’s Name: <input type="text" name="pname" value="{{ P_NAME }}"/></p>
-        <p>Maryland License #: <input type="text" name="license" value="{{ P_LICENSE }}" /></p>
-        <p>Phone Number: <input type="text" name="phone" value="{{ P_PHONE }}" /></p>
-        <p>Date: <input type="text" name="date" value="{{ DATE }}" /></p>
-        <br>
+        <div class="section">
+            <div class="input-group">
+                <p>Name: <input type="text" name="name" /></p>
+                <p>DOB: <input type="text" name="dob" /></p>
+            </div>
+
+            <div class="radio-group">
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Certification of Orders</div>
+            <p>I hereby certify that these orders are entered as a result of a discussion with and the informed consent of:</p>
+            <div class="radio-group">
+                <div><input type="radio" id="radio1" name="1" value="1">
+                <label for="radio1">the patient;</label></div>
+                <div><input type="radio" id="radio2" name="1" value="2">
+                <label for="radio2">the patient's health care agent as named in the patient's advance directive;</label></div>
+                <div><input type="radio" id="radio3" name="1" value="3">
+                <label for="radio3">the patient's guardian of the person as per the authority granted by a court order;</label></div>
+                <div><input type="radio" id="radio4" name="1" value="4">
+                <label for="radio4">the patient's surrogate as per the authority granted by the Health Care Decisions Act;</label></div>
+                <div><input type="radio" id="radio5" name="1" value="5">
+                <label for="radio5">if the patient is a minor, the patient's legal guardian or another legally authorized adult.</label></div>
+            </div>
+
+            <p>Or, I hereby certify that these orders are based on:</p>
+            <div class="radio-group">
+                <div><input type="radio" id="radio6" name="1" value="6">
+                <label for="radio6">instructions in the patient's advance directive;</label></div>
+                <div><input type="radio" id="radio7" name="1" value="7">
+                <label for="radio7">other legal authority in accordance with all provisions of the Health Care Decisions Act.</label></div>
+                <div><input type="radio" id="radio9" name="1" value="8">
+                <label for="radio9">Mark this line if the patient or authorized decision maker declines to discuss or is unable to make a decision about these treatments.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">CPR (RESUSCITATION) STATUS</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio11" name="3" value="1">
+                <label for="radio11">Attempt CPR</label></div>
+            </div>
+
+            <p>No CPR, Option A, Comprehensive Efforts to Prevent Arrest:</p>
+            <div class="radio-group">
+                <div><input type="radio" id="radio12" name="3" value="2">
+                <label for="radio12">Option A-1, Intubate</label></div>
+                <div><input type="radio" id="radio13" name="3" value="3">
+                <label for="radio13">Option A-2, Do Not Intubate (DNI)</label></div>
+            </div>
+
+            <div class="radio-group">
+                <div><input type="radio" id="radio14" name="3" value="4">
+                <label for="radio14">No CPR, Option B, Palliative and Supportive Care</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ARTIFICIAL VENTILATION</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio15" name="5" value="1">
+                <label for="radio15">May use intubation and artificial ventilation indefinitely, if medically indicated.</label></div>
+
+                <div><input type="radio" id="radio16" name="5" value="2">
+                <label for="radio16">May use intubation and artificial ventilation as a limited therapeutic trial.</label></div>
+                <div class="time-limit">Time Limit: <input type="text" name="timelimit1" /></div>
+
+                <div><input type="radio" id="radio17" name="5" value="3">
+                <label for="radio17">May use only CPAP or BiPAP for artificial ventilation, as medically indicated.</label></div>
+                <div class="time-limit">Time Limit: <input type="text" name="timelimit2" /></div>
+
+                <div><input type="radio" id="radio18" name="5" value="4">
+                <label for="radio18">Do not use any artificial ventilation (no intubation, CPAP, or BiPAP).</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">BLOOD TRANSFUSION</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio21" name="6" value="1">
+                <label for="radio21">May give any blood product (whole blood, packed red blood cells, plasma, or platelets) that is medically indicated.</label></div>
+                <div><input type="radio" id="radio22" name="6" value="2">
+                <label for="radio22">Do not give any blood products.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">HOSPITAL TRANSFER</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio24" name="7" value="1">
+                <label for="radio24">Transfer to hospital for any situation requiring hospital-level care.</label></div>
+                <div><input type="radio" id="radio25" name="7" value="2">
+                <label for="radio25">Transfer to hospital for severe pain or severe symptoms that cannot be controlled otherwise.</label></div>
+                <div><input type="radio" id="radio26" name="7" value="3">
+                <label for="radio26">Do not transfer to hospital, but treat with options available outside the hospital.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">MEDICAL WORKUP</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio27" name="8" value="1">
+                <label for="radio27">May perform any medical tests indicated to diagnose and/or treat a medical condition.</label></div>
+                <div><input type="radio" id="radio28" name="8" value="2">
+                <label for="radio28">Only perform limited medical tests necessary for symptomatic treatment or comfort.</label></div>
+                <div><input type="radio" id="radio29" name="8" value="3">
+                <label for="radio29">Do not perform any medical tests for diagnosis or treatment.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ANTIBIOTICS</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio31" name="9" value="1">
+                <label for="radio31">May use antibiotics (oral, intravenous, or intramuscular) as medically indicated.</label></div>
+                <div><input type="radio" id="radio32" name="9" value="2">
+                <label for="radio32">May use oral antibiotics when medically indicated, but do not give intravenous or intramuscular antibiotics.</label></div>
+                <div><input type="radio" id="radio33" name="9" value="3">
+                <label for="radio33">May use oral antibiotics only when indicated for symptom relief or comfort.</label></div>
+                <div><input type="radio" id="radio34" name="9" value="4">
+                <label for="radio34">Do not treat with antibiotics.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ARTIFICIALLY ADMINISTERED FLUIDS AND NUTRITION</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio35" name="10" value="1">
+                <label for="radio35">May give artificially administered fluids and nutrition, even indefinitely, if medically indicated.</label></div>
+
+                <div><input type="radio" id="radio36" name="10" value="2">
+                <label for="radio36">May give artificially administered fluids and nutrition, if medically indicated, as a trial.</label></div>
+                <div class="time-limit">Time Limit: <input type="text" name="timelimit3" /></div>
+
+                <div><input type="radio" id="radio37" name="10" value="3">
+                <label for="radio37">May give fluids for artificial hydration as a therapeutic trial, but do not give artificially administered nutrition.</label></div>
+                <div class="time-limit">Time Limit: <input type="text" name="timelimit4" /></div>
+
+                <div><input type="radio" id="radio38" name="10" value="4">
+                <label for="radio38">Do not provide artificially administered fluids or nutrition.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">DIALYSIS</div>
+            <div class="radio-group">
+                <div><input type="radio" id="radio39" name="11" value="1">
+                <label for="radio39">May give chronic dialysis for end-stage kidney disease if medically indicated.</label></div>
+
+                <div><input type="radio" id="radio40" name="11" value="2">
+                <label for="radio40">May give dialysis for a limited period.</label></div>
+                <div class="time-limit">Time Limit: <input type="text" name="timelimit5" /></div>
+
+                <div><input type="radio" id="radio41" name="11" value="3">
+                <label for="radio41">Do not provide acute or chronic dialysis.</label></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Other Orders</div>
+            <input type="text" name="otherorders" />
+        </div>
+
+        <div class="section practitioner-info">
+            <div class="section-title">Practitioner Information</div>
+            <p>Print Practitioner's Name: <input type="text" name="pname" value="{{ P_NAME }}"/></p>
+            <p>Maryland License #: <input type="text" name="license" value="{{ P_LICENSE }}" /></p>
+            <p>Phone Number: <input type="text" name="phone" value="{{ P_PHONE }}" /></p>
+            <p>Date: <input type="text" name="date" value="{{ DATE }}" /></p>
+        </div>
+
         <input type="submit" value="Submit">
     </form>
 </body>
+</html>
