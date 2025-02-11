@@ -9,7 +9,6 @@
             --background-color: #f8f9fa;
             --border-color: #e9ecef;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -19,7 +18,6 @@
             background-color: var(--background-color);
             color: var(--primary-color);
         }
-
         h1 {
             color: var(--primary-color);
             text-align: center;
@@ -27,14 +25,12 @@
             border-bottom: 2px solid var(--secondary-color);
             margin-bottom: 30px;
         }
-
         form {
             background: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         .section {
             margin-bottom: 30px;
             padding: 20px;
@@ -42,18 +38,15 @@
             border-radius: 5px;
             background-color: white;
         }
-
         .section-title {
             font-weight: bold;
             color: var(--secondary-color);
             margin-bottom: 15px;
             font-size: 1.2em;
         }
-
         .input-group {
             margin-bottom: 15px;
         }
-
         input[type="text"] {
             width: 100%;
             padding: 8px;
@@ -62,33 +55,23 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-
-        input[type="radio"] {
+        input[type="checkbox"], input[type="radio"] {
             margin-right: 10px;
         }
-
-        input[type="radio"] + label {
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .radio-group {
+        .radio-group, .input-group {
             margin-left: 20px;
             margin-bottom: 10px;
         }
-
         .time-limit {
             margin-left: 40px;
             margin-top: 5px;
             margin-bottom: 15px;
         }
-
         hr {
             border: none;
             border-top: 1px solid var(--border-color);
             margin: 20px 0;
         }
-
         input[type="submit"] {
             background-color: var(--secondary-color);
             color: white;
@@ -101,11 +84,9 @@
             margin: 30px auto 0;
             transition: background-color 0.3s ease;
         }
-
         input[type="submit"]:hover {
             background-color: #2980b9;
         }
-
         .practitioner-info {
             margin-top: 30px;
             padding-top: 20px;
@@ -118,82 +99,116 @@
     <form action="#" method="post">
         <div class="section">
             <div class="input-group">
-                <p>Patient Name: <input type="text" name="name" /></p>
-                <p>Medical Record No: <input type="text" name="name" /></p>
+                <p>Patient Name: <input type="text" name="1" /></p>
+                <p>Medical Record No: <input type="text" name="0" /></p>
             </div>
-
             <div class="radio-group">
-                <input type="checkbox" id="timeframe" name="timeframe" value="timeframe">
+                <input type="checkbox" id="timeframe" name="2" value="1">
                 <label for="timeframe">Time frame: The following certifications are made within 2 hours of examining the individual.</label>
             </div>
         </div>
-
         <div class="section">
             <div class="section-title">Certification of General Status</div>
             <p>Based on my evaluation, I hereby certify that this individual:</p>
             <div class="radio-group">
-                <div><input type="radio" id="radio1" name="1" value="1">
-                <label for="radio1">is in an end-state condition.</label></div>
-                <div><input type="radio" id="radio2" name="1" value="2">
-                <label for="radio2">is in a persistent vegitative state.</label></div>
-                <div><input type="radio" id="radio3" name="1" value="3">
-                <label for="radio3">is in a terminal condition caused by injury, disease, or illness.</label></div>
+                <div>
+                    <input type="radio" id="radioA" name="3" value="1">
+                    <label for="radioA">is in an end-state condition.</label>
+                </div>
+                <div>
+                    <input type="radio" id="radioB" name="3" value="2">
+                    <label for="radioB">is in a persistent vegetative state.</label>
+                </div>
+                <div>
+                    <input type="radio" id="radioC" name="3" value="3">
+                    <label for="radioC">is in a terminal condition caused by injury, disease, or illness.</label>
+                </div>
             </div>
         </div>
-
         <div class="section">
             <div class="section-title">Certifications Regarding Medical Ineffectiveness</div>
             <div class="radio-group">
-                <div><input type="checkbox" id="radio11" name="3" value="1">
-                <label for="radio11">I hereby certify that, to a reasonable degree of medical necessity,
-                    the following treatment(s):
-                </label></div>
+                <div>
+                    <input type="checkbox" id="certifyMI" name="4" value="1">
+                    <label for="certifyMI">I hereby certify that, to a reasonable degree of medical necessity, the following treatment(s):</label>
+                </div>
                 <div class="section">
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">CPR</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Mechanical Ventilation or Respiration</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Hospitalization</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Antibiotics</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Blood Products</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Medical Tests</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Artificial Hydration</label></div>
-                    <div><input type="checkbox" id="radio11" name="3" value="1"><label for="radio11">Artificial Nutrition</label></div>
-                    <div class="time-limit">Other <input type="text" name="6" /></div>
+                    <div>
+                        <input type="checkbox" id="cpr" name="5" value="1">
+                        <label for="cpr">CPR</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ventilation" name="6" value="1">
+                        <label for="ventilation">Mechanical Ventilation or Respiration</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="hospitalization" name="7" value="1">
+                        <label for="hospitalization">Hospitalization</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="antibiotics" name="8" value="1">
+                        <label for="antibiotics">Antibiotics</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bloodproducts" name="9" value="1">
+                        <label for="bloodproducts">Blood Products</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="medtests" name="10" value="1">
+                        <label for="medtests">Medical Tests</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="hydration" name="11" value="1">
+                        <label for="hydration">Artificial Hydration</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="nutrition" name="12" value="1">
+                        <label for="nutrition">Artificial Nutrition</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dialysis" name="13" value="1">
+                        <label for="dialysis">Dialysis</label>
+                    </div>
+                    <div class="time-limit">Other: <input type="text" name="14" /></div>
                 </div>
             </div>
             <p>I have informed the following individual(s) of my determination:</p>
             <div class="radio-group">
-                <div><input type="checkbox" id="radio1" name="1" value="1">
-                <label for="radio1">The affected individual.</label></div>
-                <div><input type="checkbox" id="radio2" name="1" value="2">
-                <label for="radio2">The individual's Agent, guardian, or surrogate.</label></div>
+                <div>
+                    <input type="checkbox" id="informed1" name="15" value="1">
+                    <label for="informed1">The affected individual.</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="informed2" name="16" value="1">
+                    <label for="informed2">The individual's Agent, guardian, or surrogate.</label>
+                </div>
             </div>
         </div>
-
         <div class="section">
             <div class="section-title">Certifications Regarding Decision-Making Capacity</div>
             <div class="radio-group">
                 <p>Level of decision making capacity. Based on my evaluation, I hereby certify that this individual:</p>
-                <div><input type="radio" id="radio15" name="5" value="1">
-                <label for="radio15">Has adequate decision making capacity (including decisions about life-sustaining treatment)</label></div>
-
-                <div><input type="radio" id="radio16" name="5" value="2">
-                <label for="radio16">Lacks adequate decision making capacity (including decisions about life-sustaining treatment)</label></div>
-                <div class="time-limit">Time Limit: <input type="text" name="timelimit1" /></div>
-
+                <div>
+                    <input type="radio" id="capable" name="17" value="1">
+                    <label for="capable">Has adequate decision making capacity (including decisions about life-sustaining treatment)</label>
+                </div>
+                <div>
+                    <input type="radio" id="incapable" name="17" value="2">
+                    <label for="incapable">Lacks adequate decision making capacity (including decisions about life-sustaining treatment)</label>
+                </div>
+                <!--<div class="time-limit">Other: <input type="text" name="18" /></div>-->
                 <p>Diagnosis of reason for incapacity:</p>
-                <input type="checkbox" id="dementia" name="6" value="dementia"><label for="dementia">Dementia</label>
-                <input type="checkbox" id="stroke" name="6" value="stroke"><label for="stroke">Stroke/CVA</label>
-                <input type="checkbox" id="braininjury" name="6" value="braininjury"><label for="braininjury">Brain injury</label>
-                <input type="checkbox" id="delirium" name="6" value="delirium"><label for="delirium">Delirium</label>
-                <div class="time-limit">Other <input type="text" name="6" /></div>
+                <input type="checkbox" id="dementia" name="19" value="1"><label for="dementia">Dementia</label>
+                <input type="checkbox" id="stroke" name="20" value="1"><label for="stroke">Stroke/CVA</label>
+                <input type="checkbox" id="braininjury" name="21" value="1"><label for="braininjury">Brain injury</label>
+                <input type="checkbox" id="delirium" name="22" value="1"><label for="delirium">Delirium</label>
+                <div class="time-limit">Other: <input type="text" name="23" /></div>
             </div>
         </div>
-
         <div class="section practitioner-info">
-            <div class="section-title">Date</div>
-            <p>Date: <input type="text" name="date" value="{{ DATE }}" /></p>
+            <div class="section-title">Info</div>
+            <p>Date: <input type="text" name="25" value="{{ DATE }}" /></p>
         </div>
-
         <input type="submit" value="Submit">
     </form>
 </body>
