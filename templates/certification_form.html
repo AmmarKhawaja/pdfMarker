@@ -94,13 +94,60 @@
         }
     </style>
 </head>
+<script>
+    function updateRadios(value) {
+        const practitionerRadios = document.getElementsByName("practitionerRole");
+        if (practitionerRadios.length > 0) {
+            practitionerRadios[0].checked = true;
+        }
+
+        const timeframeRadios = document.getElementsByName("2");
+        if (timeframeRadios.length > 0) {
+            timeframeRadios[0].checked = true;
+        }
+
+        const capacityRadios = document.getElementsByName("17");
+        if (capacityRadios.length > 1) {
+            if (value === "fullCode") {
+                capacityRadios[0].checked = true;
+            } else if (value === "DNR") {
+                capacityRadios[1].checked = true;
+            }
+        }
+    }
+</script>
 <body>
     <h1>Certification Form</h1>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <input type="radio" name="topChoice" value="fullCode" onclick="updateRadios('fullCode')">
+        <label for="topChoice">Full Code</label>
+    
+        <input type="radio" name="topChoice" value="DNR" onclick="updateRadios('DNR')">
+        <label for="topChoice">DNR</label>
+    </div>
     <form action="#" method="post">
         <div class="section">
             <div class="input-group">
-                <p>Patient Name: <input type="text" name="1" /></p>
+                <p>Patient Name: I am certifying information about <input type="text" name="1" /></p>
                 <p>Medical Record No: <input type="text" name="0" /></p>
+                <div>
+                <p>Certifying practitioner: I am<br>
+                <label>
+                    <input type="radio" name="practitionerRole" value="1"> 
+                    The attending physician.
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="practitionerRole" value="2"> 
+                    The medical director or another certifying practitioner.
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="practitionerRole" value="3"> 
+                    A neurologist, neurosurgeon, or other physician with special expertise In evaluating cognitive functioning required for diagnosing a persistent vegetative state.
+                </label>
+                </p>
+                </div>
             </div>
             <div class="radio-group">
                 <input type="checkbox" id="timeframe" name="2" value="1">

@@ -165,13 +165,16 @@ def certification_form():
     if request.method == "POST":
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=letter)
-        can.drawString(274, 630, "X")
         if "1" in request.form:
             can.drawString(95, 755, request.form.get("1",""))
             can.drawString(270, 645, request.form.get("1",""))
         if "0" in request.form:
             can.drawString(415, 750, request.form["0"])
         can.drawString(425, 50, request.form["25"])
+        role_status = [(274,630),(396,630),(137,620)]
+        if "practitionerRole" in request.form:
+            role = role_status[int(request.form["practitionerRole"]) - 1]
+            can.drawString(role[0], role[1], "X")
         if "2" in request.form:
             can.drawString(108, 595, "X")
         dims_general_status = [515, 445, 363]
@@ -206,19 +209,29 @@ def certification_form():
         if "16" in request.form:
             can.drawString(254, 198, "X")
         dims_decision = [142, 127]
+        valid = True
         if "17" in request.form:
             can.drawString(80, dims_decision[int(request.form["17"]) - 1], "X")
+            valid = False
         if "19" in request.form:
             can.drawString(245, 105, "X")
+            valid = True
         if "20" in request.form:
             can.drawString(316, 105, "X")
+            valid = True
         if "21" in request.form:
             can.drawString(399, 102, "X")
+            valid = True
         if "22" in request.form:
             can.drawString(478, 99, "X")
+            valid = True
         if "23" in request.form and len(request.form["23"]):
             can.drawString(80, 87, "X")
             can.drawString(130, 87, request.form.get("23",""))
+            if request.form.get("23","") != "":
+                valid = True
+        if not valid:
+            return "Did not fill in Diagnosis of reason for incapacity."
         can.drawImage("signatures/" + session.get("P_SIGN"), 120, 45, 50, 15)
         can.save()
         packet.seek(0)
