@@ -212,7 +212,8 @@ def certification_form():
         valid = True
         if "17" in request.form:
             can.drawString(80, dims_decision[int(request.form["17"]) - 1], "X")
-            valid = False
+            if request.form["17"] == "2":
+                valid = False
         if "19" in request.form:
             can.drawString(245, 105, "X")
             valid = True
